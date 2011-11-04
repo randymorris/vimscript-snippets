@@ -5,9 +5,7 @@
 function! GetTag()
     let tag = input("Tag: ")
     execute "normal! i<".tag."></".tag.">"
-    for i in range(strlen(tag)+2)
-        normal! h
-    endfor
+    execute "normal! " . repeat('h', strlen(tag)+2)
 endfunction
 
 inoremap \tag <C-o>:call GetTag()<enter>
