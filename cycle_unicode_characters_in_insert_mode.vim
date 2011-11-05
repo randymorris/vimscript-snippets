@@ -17,7 +17,7 @@ let g:unicode_list = [
 \    [ 'U', 'Û', 'Ù', 'Ü' ],
 \]
 
-function! CycleUnicode(mode)
+function! s:CycleUnicode(mode)
     let char = matchstr(getline('.'), '.', col('.')-1)
     for sublist in g:unicode_list
         let idx = index(sublist, char)
@@ -36,5 +36,5 @@ function! CycleUnicode(mode)
     endif
 endfunction
 
-inoremap <f12> <esc>:call CycleUnicode('i')<enter><right>
-nnoremap <f12> :call CycleUnicode('n')<enter>
+inoremap <f12> <esc>:call <SID>CycleUnicode('i')<enter><right>
+nnoremap <f12> :call <SID>CycleUnicode('n')<enter>

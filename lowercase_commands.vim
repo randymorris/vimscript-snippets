@@ -8,7 +8,7 @@ let s:command_line_substitutes = [
     \ ['^h ', 'vertical help '],
 \]
 
-function! CommandLineSubstitute()
+function! s:CommandLineSubstitute()
     let cl = getcmdline()
     if exists('s:command_line_substitutes') && getcmdtype() == ':'
         for [k, v] in s:command_line_substitutes
@@ -21,4 +21,4 @@ function! CommandLineSubstitute()
     return cl
 endfunction
 
-cnoremap <enter> <c-\>eCommandLineSubstitute()<enter><enter>
+cnoremap <enter> <c-\>e<SID>CommandLineSubstitute()<enter><enter>
